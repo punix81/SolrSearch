@@ -1,0 +1,25 @@
+<form class="searchbox">
+	<!--<div id="inputs">-->
+		<!--&lt;!&ndash;<input id="query" type="text" placeholder="{{placeHolder}}" ng-model="userQuery" autocomplete="off" />&ndash;&gt;-->
+		<!--&lt;!&ndash;<input id="submit" name="submit" type="submit" value="search" ng-click="handleSubmit()" />&ndash;&gt;-->
+	<!--</div>-->
+
+
+	<div class="input-group" id="inputs">
+		<input type="text" class="form-control"  id="query" type="text" placeholder="{{placeHolder}}" ng-model="userQuery" autocomplete="off" />
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button"  id="submit" name="submit"   ng-click="handleSubmit()"  >Go!</button>
+      </span>
+	</div><!-- /input-group -->
+
+	<div id="hints" ng-show="showHints">
+		<ul id="list">
+			<li ng-repeat="hint in hints" ng-mousedown="selectHint($index,true);handleSubmit()" ng-class="{'selected':hint.selected}">
+				{{hint.title}}
+			</li>
+		</ul>
+
+		<div class="alert alert-info" id="message" ng-show="showMessage">{{message}}</div>
+		<!--<div id="message" ng-show="showMessage">{{message}}</div>-->
+	</div>
+</form>

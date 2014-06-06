@@ -1,0 +1,78 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h1>Search Box 2 Test</h1>
+		<p>This page is for testing of the search box controller. Enter a search term in the box below.</p>
+
+		<hr/>
+
+		<div class="row">
+			<div class="span6">
+				<searchbox id="searchbox"
+						   data-near-match="true"
+						   data-placeholder="placeholder"
+						   data-search-hints-field="name"
+						   data-source="http://localhost:8983/solr/"
+						   ng-cloak>
+				</searchbox>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div id="search-results"
+				 class="span6"
+				 ng-controller="DocumentSearchResultsController"
+				 data-fields="*"
+				 data-source="http://localhost:8983/solr/"
+				 ng-cloak>
+				<div class="column-512">
+
+					<!--Show Number of Result Found-->
+					<div class="loading" ng-show="loading" ng-cloak>
+						<p>Loading search results ...</p>
+						<img src="img/ajax-loader-bar.gif" alt="Loading search results" />
+					</div>
+
+
+					<div class="summary" ng-show="documents.length > 0" ng-cloak>
+						<div style="padding-bottom: 20px;">Search Results <span class="badge">{{totalResults}}</span> found</div>
+						<div class="alert alert-warning" ng-show="error">{{error}}</div>
+						<div class="alert alert-info" ng-show="message">{{message}}</div>
+					</div>
+
+					<!--Show documents-->
+					<article ng-repeat="doc in documents" class="document" ng-cloak>
+						<a ng-href="{{doc.presentation_url}}" class="title">{{doc.id}}</a>
+						<div class="thumb" ng-show="doc.dobj_proxy_small" style="margin-left:10px;">
+							<a ng-href="{{doc.presentation_url}}" class="thumbnail">
+								<img ng-src="{{doc.dobj_proxy_small}}" alt="{{doc.title}}" height="64px" width="64px" />
+							</a>
+						</div>
+
+						<div class="text">{{doc.abstract | truncate:250 }}</div>
+						<div class="meta inline">
+							<span class="region" ng-show="doc.region">{{doc.id}}</span>
+							<span class="country" ng-show="doc.country">{{doc.id}}</span>
+							<div class="existdates">
+								<span>{{doc.timestamp}}</span>
+								<span ng-show="doc.toDate">&ndash;</span>
+								<span>{{doc.timestamp}}</span>
+							</div>
+						</div>
+					</article>
+
+					<!--Show Pagination-->
+
+					<ul class="pagination">
+						<li ng-repeat="page in pages">
+							<a ng-class="{iscurrent:page.isCurrent}" ng-click="$parent.handleSetPage(page.number)">{{page.name}}</a>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
