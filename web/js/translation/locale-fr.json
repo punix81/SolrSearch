@@ -1,0 +1,19 @@
+{
+    "APPLICATION_NAME": "e-Helvetica",
+
+    "INDEX_HOMEPAGE": "Accueil",
+    "INDEX_ABOUTUS": "À propos de nous",
+    "INDEX_CONTACT": "Contacter",
+    "INDEX_HELP": "Aider",
+    "INDEX_LOGOUT": "Déconnexion",
+    "INDEX_SETTINGS": "paramètres",
+    "INDEX_LANGUAGE_CHOICE": "Choix de la langue",
+    "INDEX_BUTTON_TEXT_EN": "EN",
+    "INDEX_BUTTON_TEXT_DE": "DE",
+    "INDEX_BUTTON_TEXT_FR": "FR",
+    "INDEX_BUTTON_TEXT_IT": "IT",
+    "INDEX_SEARCH": "Recherche",
+    "INDEX_SORTBY": "Trier par",
+    "INDEX_FOOTER": "Footer",
+    "INDEX_LEGAL": "Legal"
+}

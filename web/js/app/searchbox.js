@@ -8,14 +8,20 @@
 /*---------------------------------------------------------------------------*/
 /* Application                                                               */
 
-var app = angular.module('solr-ajax',['ngRoute','SearchHints','Solr','TextFilters','Utils']);
 
-/**
- * Define application routes.
- * @see http://www.bennadel.com/blog/2420-Mapping-AngularJS-Routes-Onto-URL-Parameters-And-Client-Side-Events.htm
- */
-app.config(['$routeProvider', function($routeProvider) {
-    $routeProvider.
-        when('/:query', { event: "/query" }).
-        otherwise({ event: "/" });
-}]);
+/* global angular */
+(function () {
+    angular.module('solr-ajax',
+            [
+                'ngRoute','SearchHints','Solr','TextFilters','Utils'
+            ])
+      /*  .constant('EHELVETICA_CONFIG', {
+            defaultLandingUrl: '/',
+            translationFilesPath: 'js/commons/translation'
+        })*/
+        .config(['$routeProvider', function($routeProvider) {
+            $routeProvider.
+                when('/:query', { event: "/query" }).
+                otherwise({ event: "/" });
+        }])
+}());
