@@ -1,9 +1,12 @@
 <div class="row">
 	<div class="col-lg-12">
-		<h1>Search Box 2 Test</h1>
+		<h1>marwen</h1>
 		<p>This page is for testing of the search box controller. Enter a search term in the box below.</p>
 
 		<hr/>
+
+
+        <!--data-source= http://ec2-75-101-214-153.compute-1.amazonaws.com:8983/solr/collection1/select?q=*:*&fl=id&json.wrf=JSON_CALLBACK&rows=10&wt=xml-->
 
 		<div class="row">
 			<div class="span6">
@@ -27,13 +30,20 @@
 				 ng-cloak>
 				<div class="column-512">
 
-					<!--Show Number of Result Found-->
-					<div class="loading" ng-show="loading" ng-cloak>
-						<p>Loading search results ...</p>
-						<img src="img/ajax-loader-bar.gif" alt="Loading search results" />
-					</div>
+					<!--Loading img-->
+
+				    <div class="alert alert-warning" ng-show="loading" ng-cloak>
+                        <img src="http://upload.wikimedia.org/wikipedia/commons/4/42/Loading.gif" class="icon" />
+                        <h4>Processing... <button type="button" class="close" style="float: none;" data-dismiss="modal" aria-hidden="true">×</button></h4>
+                    </div>
 
 
+
+
+
+
+
+                    <!--Show Number of Result Found-->
 					<div class="summary" ng-show="documents.length > 0" ng-cloak>
 						<div style="padding-bottom: 20px;">Search Results <span class="badge">{{totalResults}}</span> found</div>
 						<div class="alert alert-warning" ng-show="error">{{error}}</div>
@@ -41,25 +51,44 @@
 					</div>
 
 					<!--Show documents-->
-					<article ng-repeat="doc in documents" class="document" ng-cloak>
-						<a ng-href="{{doc.presentation_url}}" class="title">{{doc.id}}</a>
-						<div class="thumb" ng-show="doc.dobj_proxy_small" style="margin-left:10px;">
-							<a ng-href="{{doc.presentation_url}}" class="thumbnail">
-								<img ng-src="{{doc.dobj_proxy_small}}" alt="{{doc.title}}" height="64px" width="64px" />
-							</a>
-						</div>
+			         <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item document"  ng-repeat="doc in documents"  ng-cloak>
+                                <div class="row">
+                                    <div class="col-xs-2 col-md-1">
+                                        <img src="{{doc.firstImageUrl}}" class="img-circle img-responsive" alt="" /></div>
+                                    <div class="col-xs-10 col-md-11">
+                                        <div>
+                                            <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
+                                                {{doc.name}}</a>
+                                            <div class="mic-info">
+                                                By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+                                            </div>
+                                        </div>
+                                        <div class="comment-text">
+                                            Awesome design
+                                        </div>
+                                        <div class="action">
+                                            <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-success btn-xs" title="Approved">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
 
-						<div class="text">{{doc.abstract | truncate:250 }}</div>
-						<div class="meta inline">
-							<span class="region" ng-show="doc.region">{{doc.id}}</span>
-							<span class="country" ng-show="doc.country">{{doc.id}}</span>
-							<div class="existdates">
-								<span>{{doc.timestamp}}</span>
-								<span ng-show="doc.toDate">&ndash;</span>
-								<span>{{doc.timestamp}}</span>
-							</div>
-						</div>
-					</article>
+                    </div>
+
+
+
+
 
 					<!--Show Pagination-->
 
